@@ -1,13 +1,26 @@
 # Competitions_at_OOD
-This is a work-in-progress platform designed to simplify and streamline the process of organizing and managing competitions at OOD.
+This platform is aimed at simplifying the management of competitions at OOD. We are actively developing and refining the system to provide a comprehensive solution for organizing, judging, and announcing competition results.
 
-Features:
+## Features:
 
-- Competition creation and management: Create and configure diverse competitions with deadlines, eligibility criteria, judging rubrics, and participant registration forms.
-- Judging workflow: Organize judges, assign entries, and facilitate convenient online judging with various scoring criteria and builtin forms.
-- Results and announcements: Rank Participants on Scores, Automate participant list for next round, Publish competition results
-- Communication tools: Built-in system helps organizers communicate information to participants, other organizers, and judges.
-- Data dashboard: Track key metrics like submission numbers, judge activity, and participant engagement with visualizations and reports.
+- **Competition Creation and Management:** Create and configure various competitions with customizable dates, scoring criteria, judging rubrics, and participant registration forms.
+- **Judging Workflow:** Efficiently organize judges, assign entries, and conduct online judging with dynamic scoring criteria and built-in forms.
+- **Results and Announcements:** Automatically rank participants based on scores, generate participant lists for the next round, and publish competition results. 
+- **Communication Tools:** Utilize built-in communication tools to disseminate information to participants, fellow organizers, and judges. 
 
+## Technology Used:
 
+### Backend:
+- **Framework:** Flask
+- **Database:** MongoDB Atlas
+- **Task Queue:** Celery
 
+### Frontend:
+- **Languages:** HTML, CSS, JavaScript
+- **Framework:** Bootstrap
+
+### Forms:
+- **Library:** WTForms
+
+## Current Status:
+The platform is currently under active development and will be hosted soon. 
