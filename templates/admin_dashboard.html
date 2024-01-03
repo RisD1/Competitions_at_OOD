@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Compete@OOD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #000;
+            background-color: #fff; 
+        }
+
+        .logo {
+            width: 300px; 
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, color 0.3s; 
+        }
+
+        .dashboard-title {
+            font-size: 1.8rem;
+            color: #000; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .control-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 10px 0;
+            border-top: 1px solid #333; 
+            border-bottom: 1px solid #333; 
+        }
+
+        .control-options {
+            display: flex;
+            align-items: center;
+        }
+
+        .control-options > * {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #000; 
+            transition: color 0.3s;
+        }
+
+        .control-options > *:hover {
+            color: #00a3da; 
+        }
+
+        .search-bar,
+        .filter-bar {
+            padding: 8px;
+            border: 1px solid #000; 
+            border-radius: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            color: #000;
+        }
+
+        .search-bar:focus,
+        .filter-bar:focus {
+            border-color: #333;
+            box-shadow: none;
+        }
+
+        .search-bar::placeholder,
+        .filter-bar::placeholder {
+            color: #000; 
+        }
+
+        .create-new {
+            background-color: #000; 
+            border: 1px solid #000; 
+            border-radius: 5px;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+            padding: 8px 20px;
+        }
+
+        .create-new:hover {
+            background-color: #00a3da; 
+            color: #000; 
+            border: 1px solid #000;
+        }
+
+        .manage-permissions {
+            color: #000; 
+            border-radius: 5px;
+            padding: 8px 20px;
+            transition: color 0.3s, border-color 0.3s;
+            text-decoration: none;
+        }
+
+        .manage-permissions:hover {
+            color: #00a3da; 
+        }
+
+        .filter-bar {
+            display: none; 
+        }
+
+        .search-bar:hover {
+            color: #000;
+        }
+
+        .card {
+            border: 1px solid #333; 
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            border-bottom: 1px solid #333; 
+            color: #333; 
+            border-radius: 10px 10px 0 0;
+            padding: 15px;
+        }
+
+        .card-body {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .footer {
+            padding: 20px 0;
+            font-size: 0.9rem;
+            color: #777; 
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background-color: #000; 
+            border: 1px solid #000; 
+            border-radius: 0px;
+            color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #00a3da; 
+            color: #000; 
+            border: 1px solid #000; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    <a href="{{ url_for('landing') }}">
+        <img class="logo" src="/static/images/OOD_Logo_Jan2018_OT.svg" alt="GEMS Our Own English High School Logo">
+    </a>
+    <h1 class="dashboard-title">Admin Dashboard</h1>
+    <div class="control-bar">
+        <div class="control-options">
+            <a href="{{ url_for('create_competition') }}" class="create-new">Create new +</a>
+            <input type="text" class="search-bar" placeholder="Search...">
+        </div>
+        <a href="#" class="manage-permissions">Manage Account</a>
+    </div>
+        <p>Session User ID: {{ user_id }}</p>
+
+      <div class="row">
+    {% for competition in competitions %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ competition.competition_name }}</h5>
+                    {% if competition.competition_subtitle %}
+                        <h6 class="card-subtitle mb-2 text-muted">{{ competition.competition_subtitle }}</h6>
+                    {% endif %}
+                    <p class="card-text">Status: None</p>
+                    <a href="#" class="btn btn-primary">More</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+</div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+{% endwith %}
+
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
