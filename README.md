@@ -1,2 +1,2 @@
-# Competition_at_OOD
+# Competitions_at_OOD
 Competition Management Platform for OOD
