@@ -1,5 +1,5 @@
 # Competitions_at_OOD
-This platform is aimed at simplifying the management of competitions at OOD. We are actively developing and refining the system to provide a comprehensive solution for organizing, judging, and announcing competition results.
+This platform is aimed at streamlining the management of competitions at OOD.
 
 ## Features:
 
